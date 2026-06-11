@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Viewer</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="logo">
+    <span class="logo-badge">MD</span>
+    Markdown Viewer
+  </div>
+  <span class="header-hint">Local · No uploads · No tracking</span>
+</header>
+
+<!-- Upload screen -->
+<div id="upload-screen">
+  <div class="drop-zone" id="drop-zone">
+    <span class="drop-icon">📝</span>
+    <div class="drop-title">Drop your Markdown file here</div>
+    <div class="drop-sub">
+      Supports .md and .markdown files<br>
+      Renders headings, tables, code, blockquotes &amp; more
+    </div>
+    <button class="browse-btn" id="browse-btn">
+      📂 Browse file
+    </button>
+    <p class="drop-footnote">Everything stays in your browser — nothing is sent anywhere</p>
+  </div>
+  <input type="file" id="file-input" accept=".md,.markdown,.txt">
+</div>
+
+<!-- Render screen -->
+<div id="render-screen">
+  <div class="toolbar">
+    <div class="file-pill">
+      <span class="dot"></span>
+      <span id="file-name">file.md</span>
+    </div>
+    <div class="toolbar-right">
+      <button class="btn" id="copy-btn" onclick="copyHTML()">📋 Copy HTML</button>
+      <button class="btn" onclick="resetView()">↩ New file</button>
+    </div>
+  </div>
+  <div class="render-pane">
+    <div class="md-body" id="output"></div>
+  </div>
+</div>
+<script src="scripts.js"></script>
+</body>
+</html>
