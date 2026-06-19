@@ -17,3 +17,5 @@ This project leverages the following AWS Infrastructure Components:
 - To hold source code files for the front-end.
 ### AWS CloudFront
 - CDN for caching and serving front-end.
+### Route53 DNS
+- To expose the application via custom domain.
