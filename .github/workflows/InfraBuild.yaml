@@ -12,13 +12,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v6.1.0
-      #   with:
-      #     aws-region: ${{ vars.AWS_REGION }}
-      #     role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-      #     role-session-name: GitHubTerraformSession
-      # - name: Setup Terraform
-      #   uses: hashicorp/setup-terraform@v4.0.1
-      - name: Get Present Directory
-        run: echo $(pwd)
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.1.0
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: GitHubTerraformSession
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4.0.1
+      - name: Terraform Initialize and Plan
+        run: |
+          cd ./iac
+          terraform init
+          terraform plan -out ${{ vars.PROJECT_NAME }}.tfplan
