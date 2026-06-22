@@ -28,8 +28,9 @@ jobs:
       - name: Upload Terraform Plan
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ vars.PROJECT_NAME }}.tfplan
-          path: ./iac
+          name: ${{ vars.PROJECT_NAME }}TerraformPlan
+          path: ./iac/${{ vars.PROJECT_NAME }}.tfplan
+          archive: false
   TerraformApply:
     needs: TerraformPlan
     runs-on: ubuntu-latest
