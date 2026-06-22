@@ -25,6 +25,11 @@ jobs:
           cd ./iac
           terraform init
           terraform plan -out ${{ vars.PROJECT_NAME }}.tfplan
+      - name: Upload Terraform Plan
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ vars.PROJECT_NAME }}.tfplan
+          path: ./iac
   TerraformApply:
     needs: TerraformPlan
     runs-on: ubuntu-latest
