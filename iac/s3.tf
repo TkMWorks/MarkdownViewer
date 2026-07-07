@@ -13,7 +13,7 @@ resource "aws_s3_bucket_policy" "frontend_content_s3bucket_policy" {
 }
 
 resource "aws_s3_object" "html_page" {
-  key           = "index.html"
+  key           = "${local.infraprefix}/index.html"
   bucket        = aws_s3_bucket.frontend_content_bucket.id
   source        = "../src/index.html"
   force_destroy = true
@@ -25,7 +25,7 @@ resource "aws_s3_object" "html_page" {
 }
 
 resource "aws_s3_object" "javascript_file" {
-  key           = "scripts.js"
+  key           = "${local.infraprefix}/scripts.js"
   bucket        = aws_s3_bucket.frontend_content_bucket.id
   source        = "../src/scripts.js"
   force_destroy = true
@@ -37,7 +37,7 @@ resource "aws_s3_object" "javascript_file" {
 }
 
 resource "aws_s3_object" "css_stylesheet" {
-  key           = "styles.css"
+  key           = "${local.infraprefix}/styles.css"
   bucket        = aws_s3_bucket.frontend_content_bucket.id
   source        = "../src/styles.css"
   force_destroy = true
